@@ -1,0 +1,23 @@
+
+{
+    "python.logging.level": 40,
+    "liveshare.diagnosticLoggingLevel": "Trace",
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        ".",
+        "-p",
+        "test_*.py"
+    ],
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "jupyter.kernels.filter": [
+        {
+            "path": "/Users/eleanorboyd/Library/Jupyter/kernels/pythonproject/kernel.json",
+            "type": "jupyterKernelspec"
+        }
+    ],
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestEnabled": false,
+}
