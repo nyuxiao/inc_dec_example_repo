@@ -1,30 +1,34 @@
-name: Remove Needs Labels on Issue Close
+name: Remove Needs PR Label
 
 on:
   issues:
-    types:
-      - closed
+    types: [closed]
 
 jobs:
-  remove_labels:
+  remove-label:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v3
 
-      - name: Remove labels
-        uses: actions/github-script@v4
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const issue = context.issue;
-            const labelsToRemove = ['needs proposal', 'needs PR', 'needs spike', 'needs community feedback'];
-
-            for (const label of labelsToRemove) {
-              // Remove the label from the issue
-              await github.issues.removeLabel({
-                ...issue,
-                name: label
-              });
-            }
+    - name: Remove "needs PR" label
+      uses: actions/github-script@v5
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const issue = context.issue; // context of the issue
+          const needsPR = "needs PR"; // label to be removed
+          const { data: issueData } = await github.issues.get({
+            owner: issue.owner,
+            repo: issue.repo,
+            issue_number: issue.number,
+          });
+          if (issueData.labels.map((label) => label.name).includes(needsPR)) {
+            await github.issues.removeLabel({
+              owner: issue.owner,
+              repo: issue.repo,
+              issue_number: issue.number,
+              name: needsPR,
+            });
+          }
