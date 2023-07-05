@@ -1,17 +1,7 @@
-
 {
-    "python.logging.level": 40,
-    "liveshare.diagnosticLoggingLevel": "Trace",
-    "python.testing.unittestArgs": [
-        "-v",
-        "-s",
-        ".",
-        "-p",
-        "test_*.py"
-    ],
-    "python.testing.pytestArgs": [
-        "."
-    ],
-    "python.testing.pytestEnabled": true,
-    "python.testing.unittestEnabled": false,
+  "python.logging.level": 40,
+  "liveshare.diagnosticLoggingLevel": "Trace",
+  "python.testing.unittestArgs": ["-v", "-s", ".", "-p", "test_*.py"],
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false
 }

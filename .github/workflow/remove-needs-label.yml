@@ -1,0 +1,30 @@
+name: Remove Needs Labels on Issue Close
+
+on:
+  issues:
+    types:
+      - closed
+
+jobs:
+  remove_labels:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Remove labels
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issue = context.issue;
+            const labelsToRemove = ['needs proposal', 'needs PR', 'needs spike', 'needs community feedback'];
+
+            for (const label of labelsToRemove) {
+              // Remove the label from the issue
+              await github.issues.removeLabel({
+                ...issue,
+                name: label
+              });
+            }

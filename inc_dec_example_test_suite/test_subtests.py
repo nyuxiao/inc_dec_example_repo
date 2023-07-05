@@ -6,6 +6,6 @@ class NumbersTest(unittest.TestCase):
         """
         Test that numbers between 0 and 5 are all even.
         """
-        for i in range(0, 5):
+        for i in range(0, 10000):
             with self.subTest(i=i):
                 self.assertEqual(i % 2, 0)
