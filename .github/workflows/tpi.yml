@@ -1,7 +1,7 @@
 name: Test Plan Item Validator
 on:
   issues:
-    types: [edited, labeled]
+    types: [closed]
 
 permissions:
   issues: write
@@ -9,7 +9,7 @@ permissions:
 jobs:
   main:
     runs-on: ubuntu-latest
-    if: contains(github.event.issue.labels.*.name, 'testplan-item') || contains(github.event.issue.labels.*.name, 'invalid-testplan-item')
+    if: contains(github.event.issue.labels.*.name, 'needs PR') || contains(github.event.issue.labels.*.name, 'needs spike')
     steps:
       - name: Checkout Actions
         uses: actions/checkout@v3
