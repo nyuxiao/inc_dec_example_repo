@@ -1,11 +1,12 @@
-name: Classify PR
+name: Remove Needs Labels
 
-runs:
-  using: 'composite'
-  steps:
-    - name: 'PR impact specified'
-      uses: mheap/github-action-required-labels@v4
-      with:
-        mode: exactly
-        count: 1
-        labels: 'bug, debt, feature-request, no-changelog'
+jobs:
+  remove_labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Remove needs labels on issue close' 
+      - uses: actions-ecosystem/action-remove-labels@v1
+        with:
+          labels: |
+            needs PR
+            needs spike

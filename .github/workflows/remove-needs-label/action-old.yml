@@ -1,0 +1,11 @@
+name: Remove Needs Labels
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Remove needs labels on issue close' 
+      uses: mheap/github-action-required-labels@v4
+      with:
+        mode: exactly
+        count: 1
+        labels: 'bug, debt, feature-request, no-changelog'
