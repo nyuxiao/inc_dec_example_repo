@@ -1,0 +1,19 @@
+name: Request Author Verification
+
+on:
+  issues:
+    types:
+      - labeled
+jobs:
+  add-comment:
+    if: github.event.label.name == 'author-verification-requested' && github.event.label.name != 'verified'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Request Author Verification
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Thanks! Can you verify this?
