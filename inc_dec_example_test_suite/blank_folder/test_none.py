@@ -4,3 +4,6 @@ def not_to_be_tested():
 
 if __name__ == "__main__":
     print("hello world")
+
+def test_none():
+    assert True
