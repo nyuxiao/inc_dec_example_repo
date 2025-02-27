@@ -13,9 +13,3 @@ To run the tests, use the following command:
 ```bash
 pytest
 ```
-
-## Configuration
-
-The repository is configured with the following Git settings:
-
-- `user.email`: eleanorjboyd+test@gmail.com
